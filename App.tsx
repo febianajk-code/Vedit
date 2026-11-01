@@ -25,10 +25,13 @@ export default function App() {
   const border = dark ? "#30343B" : "#E5E7EB";
   const accent = dark ? "#DCE2EA" : "#252A32";
 
-  const player = useVideoPlayer(video?.uri ?? null, (p) => {
+  // Player dibuat tanpa sumber awal.
+  // Sumber video diatur saat pengguna memilih video.
+  const player = useVideoPlayer(null, (p) => {
     p.loop = false;
   });
 
+  // Import atau ganti video.
   const pickVideo = async () => {
     try {
       const result = await ImagePicker.launchImageLibraryAsync({
@@ -38,22 +41,44 @@ export default function App() {
       });
 
       if (!result.canceled && result.assets?.length) {
-        setVideo(result.assets[0]);
+        const selectedVideo = result.assets[0];
+
+        player.pause();
+        await player.replaceAsync(selectedVideo.uri);
+
+        setVideo(selectedVideo);
         setPlaying(false);
       }
-    } catch {
-      Alert.alert("Error", "Tidak bisa membuka galeri.");
+    } catch (error) {
+      Alert.alert(
+        "Gagal memuat video",
+        "Video tidak bisa dibuka. Coba pilih video lain."
+      );
     }
   };
 
+  // Putar atau jeda video.
   const togglePlayback = () => {
     if (!video) return;
+
     if (playing) {
       player.pause();
       setPlaying(false);
     } else {
       player.play();
       setPlaying(true);
+    }
+  };
+
+  // Kembali ke halaman utama dan kosongkan player.
+  const goHome = async () => {
+    try {
+      player.pause();
+      await player.replaceAsync(null);
+      setPlaying(false);
+      setVideo(null);
+    } catch (error) {
+      Alert.alert("Error", "Gagal menutup video.");
     }
   };
 
@@ -154,6 +179,7 @@ export default function App() {
             <Text style={styles.brand}>Vedit</Text>
             <Text style={styles.subtitle}>A video editor by F13</Text>
           </View>
+
           <Pressable
             style={styles.button}
             onPress={() => setDark(!dark)}
@@ -176,6 +202,7 @@ export default function App() {
               <Text style={styles.muted}>
                 Import a video from your gallery.
               </Text>
+
               <Pressable style={styles.primary} onPress={pickVideo}>
                 <Text style={styles.primaryText}>＋ Import video</Text>
               </Pressable>
@@ -186,14 +213,11 @@ export default function App() {
             <View style={styles.header}>
               <Pressable
                 style={styles.button}
-                onPress={() => {
-                  player.pause();
-                  setPlaying(false);
-                  setVideo(null);
-                }}
+                onPress={goHome}
               >
                 <Text style={styles.buttonText}>← Home</Text>
               </Pressable>
+
               <Text style={styles.title}>Editor</Text>
             </View>
 
@@ -210,6 +234,7 @@ export default function App() {
               <Text style={styles.title}>
                 {video.fileName || "My video"}
               </Text>
+
               <Text style={styles.muted}>
                 {video.duration
                   ? `${(video.duration / 1000).toFixed(1)} seconds`
@@ -227,6 +252,7 @@ export default function App() {
             </View>
 
             <Text style={styles.section}>Timeline</Text>
+
             <View style={styles.timeline}>
               <Text style={styles.timelineText}>
                 Video clip · Timeline editing coming next
