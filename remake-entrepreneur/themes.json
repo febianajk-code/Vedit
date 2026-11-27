@@ -1,0 +1,28 @@
+{
+  "themes": [
+    {
+      "name": "pricing",
+      "keywords": ["price", "pricing", "expensive", "cost", "subscription", "refund", "pay"]
+    },
+    {
+      "name": "performance",
+      "keywords": ["slow", "lag", "crash", "freeze", "loading", "battery", "memory"]
+    },
+    {
+      "name": "onboarding",
+      "keywords": ["sign up", "signup", "onboarding", "verification", "verify", "login", "password"]
+    },
+    {
+      "name": "bugs",
+      "keywords": ["bug", "broken", "error", "crash", "doesn't work", "not working", "lost"]
+    },
+    {
+      "name": "missing features",
+      "keywords": ["wish", "missing", "please add", "would be nice", "export", "dark mode", "integration"]
+    },
+    {
+      "name": "support",
+      "keywords": ["support", "no reply", "customer service", "ignored", "ticket"]
+    }
+  ]
+}

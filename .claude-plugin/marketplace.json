@@ -1,0 +1,18 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "remake-skill",
+  "description": "The Remake skill pack for Claude",
+  "owner": {
+    "name": "Febian",
+    "url": "https://github.com/febianajk-code"
+  },
+  "plugins": [
+    {
+      "name": "remake-skill",
+      "description": "Eleven Claude skills that remake any app: recon, architecture, design, build, backend, test, parity diff, a review-reading Entrepreneur skill, brand, launch and deploy.",
+      "source": "./",
+      "category": "productivity",
+      "homepage": "https://github.com/febianajk-code/Vedit"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+feature,area,priority,original,clone,notes
+Sign up with email or a social provider,onboarding,must,yes,no,
+Create and rename projects,projects,must,yes,no,
+Invite a collaborator by email,collaboration,must,yes,no,
+Realtime presence avatars,collaboration,should,yes,no,
+Share a public read-only link,sharing,must,yes,no,
+Export to PDF,export,should,yes,no,
+Full text search across projects,search,must,yes,no,
+Notification digest email,notifications,should,yes,no,
+Dark mode,settings,could,yes,no,
+Take payment for the Pro plan,payments,should,yes,no,

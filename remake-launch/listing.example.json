@@ -1,0 +1,20 @@
+{
+  "name": "Slotwise",
+  "subtitle": "Booking that respects you",
+  "category": "productivity",
+  "description": "Slotwise is booking software built around the complaint every scheduling app gets: time zones that lie. Share a link and never ask what time that is for me again.",
+  "keywords": ["booking", "scheduling", "time zones", "calendar"],
+  "pricing": {
+    "model": "freemium",
+    "tiers": [
+      { "name": "Free", "price": 0, "includes": ["1 event type", "20 bookings a month"] },
+      { "name": "Pro", "price": 6, "period": "month", "includes": ["Unlimited event types", "Payments at booking", "Reminders"] }
+    ]
+  },
+  "screenshots": [
+    { "file": "shot-booking.png", "caption": "Pick a real slot in your own time zone" },
+    { "file": "shot-confirm.png", "caption": "Confirmed in one tap, both sides notified" }
+  ],
+  "support_url": "https://example.com/support",
+  "privacy_policy_url": "https://example.com/privacy"
+}
