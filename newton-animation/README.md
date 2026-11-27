@@ -1,6 +1,7 @@
 # Animasi Hukum-Hukum Newton (Flat Motion Graphic)
 
 Video animasi edukasi fisika tentang gaya & Hukum Newton, siap dipakai untuk TikTok / Reels / Shorts.
+Semua video sudah bersuara: **narasi bahasa Indonesia** (TTS voice `id-ID-ArdiNeural`) + **musik latar lo-fi** yang otomatis mengecil (ducking) saat narasi berbicara.
 
 ## File video
 
@@ -18,11 +19,15 @@ Video animasi edukasi fisika tentang gaya & Hukum Newton, siap dipakai untuk Tik
 Butuh Python 3.10+, lalu:
 
 ```bash
-pip install pillow numpy imageio-ffmpeg
+pip install pillow numpy imageio-ffmpeg edge-tts
 python3 render_newton.py hukum_newton.mp4      # versi landscape 6:43
 python3 render_tiktok.py                        # 5 klip vertikal TikTok
 python3 render_tiktok.py 2                      # render hanya klip nomor 2
+python3 make_audio.py                           # narasi TTS + musik, mux ke semua video
+python3 make_audio.py tiktok_2                  # audio hanya untuk satu video
 ```
+
+Catatan: `make_audio.py` butuh internet karena narasi di-generate via edge-tts (gratis, tanpa API key). Ganti suara dengan mengubah `VOICE`, mis. `id-ID-GadisNeural` untuk suara perempuan.
 
 Font Poppins (OFL license) sudah disertakan di `fonts/`, jadi tidak perlu unduh apa pun lagi.
 
