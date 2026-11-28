@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en" data-type="place" data-radius="sharp" data-buttons="solid" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ovenbrook: sourdough bakery in Leith</title>
+<meta name="description" content="A bakery on the edge of Leith, Edinburgh. Bread from 7:30, Tuesday to Sunday; celebration cakes and tarts to order.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ovenbrook: sourdough bakery in Leith">
+<meta property="og:description" content="Bread from 7:30, Tuesday to Sunday. Cakes to order, two days ahead.">
+<meta property="og:image" content="share.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#f8f8f8">
+<!-- <link rel="canonical" href="https://the client's domain/"> -->
+<meta name="site-kind" content="other">
+<meta name="page-type" content="place">
+<meta name="page-kind" content="place">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400..600&family=Nunito+Sans:wght@400..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/system.css">
+<link rel="stylesheet" href="assets/ui/cards.css">
+<link rel="stylesheet" href="assets/motion/motion.css">
+<link rel="stylesheet" href="assets/layout/layout.css">
+<link rel="stylesheet" href="assets/icons/icon.css">
+<style>
+:root {
+  --p-bg: #f8f8f8; --p-surface: #eeeeee; --p-ink: #0a0a0a; --p-muted: #6a6a6a;
+  --p-accent: #1f6b3a; --p-accent-ink: #ffffff; --p-action: #1f6b3a; --p-action-ink: #ffffff;
+  --p-inv-bg: #0a0a0a; --p-inv-surface: #171717; --p-inv-ink: #f8f8f8; --p-inv-muted: #939393;
+  --p-inv-accent: #1f6b3a; --p-inv-accent-ink: #ffffff; --p-inv-action: #1f6b3a; --p-inv-action-ink: #ffffff;
+  --font-display: "Lora", Georgia, serif;
+  --font-text: "Nunito Sans", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.015em;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<link rel="modulepreload" href="assets/moments/moments.js">
+<link rel="modulepreload" href="assets/moments/lib.js">
+<link rel="modulepreload" href="assets/moments/picture-develops/moment.js">
+<style>
+  @media (max-width: 639px) { #shop .pl-photo > img { aspect-ratio: 16 / 9; } .visit__col .btn { width: 100%; } }
+  @media (min-width: 640px) and (max-width: 1023px) {
+    #shop { --h: 2; }
+    #shop .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    #shop .grid > :not(.pl-photo) { grid-column: auto; }
+    #shop .grid > .pl-photo { grid-column: 1 / -1; order: -1; }
+    #shop .pl-photo > img { aspect-ratio: auto; height: calc(var(--pl-room) - 1.25 * var(--t-h2) - var(--head-gap)); margin-bottom: calc(var(--padt) + var(--padb) + var(--bar) - var(--card-gap)); }
+    #shop .visit__cols { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+</style>
+</head>
+<body>
+<!-- type: place
+     deal: hero [place], nav [nav-split], close [head row of close-word without the name, re-dealt:
+     no unused photograph left for close-photo], footer [footer-visit], rhythm [colour-band],
+     buttons [solid], mark [stack]
+     offer tall-small: not used as dealt — the short page builds the groups and the photograph in one row
+     place pair: not used (short page) · type moment name: not used (short page) · rooms side: not used
+     moments: picture-develops on the #shop photograph
+     palette mint-pink-accounts, pairing lora. See plan.md. -->
+<header class="nav nav--split">
+  <div class="wrap nav__bar">
+    <a class="skip-link" href="#top">Skip to content</a>
+    <a class="nav__logo" href="#top"><span class="mark" data-mark="stack" aria-hidden="true"></span>Ovenbrook</a>
+    <nav class="nav__links" aria-label="Main">
+      <div class="nav__item"><a class="nav__link" href="#counter">Today's bake</a></div>
+      <div class="nav__item"><a class="nav__link" href="#cakes">Cakes to order</a></div>
+      <div class="nav__item"><a class="nav__link" href="#visit">Visit</a></div>
+    </nav>
+    <div class="nav__actions">
+      <a class="btn btn--primary" href="mailto:hello@ovenbrook.example">Order a cake</a>
+    </div>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 5h14M2 13h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero hero--place" data-enter aria-labelledby="hero-h">
+    <img class="hero__bg" data-phone-fill src="assets/img/photo-m33603672-1800.webp" srcset="assets/img/photo-m33603672-1200.webp 1200w, assets/img/photo-m33603672-1800.webp 1800w, assets/img/photo-m33603672-2400.webp 2400w" sizes="(max-width: 639px) 189vw, 100vw" width="1800" height="1192" alt="Rye loaves seeded with caraway on the stone floor of an open bread oven, iron doors either side" fetchpriority="high" decoding="async" data-source="library-057" data-subject="oven" style="object-position: 50% 60%">
+    <div class="wrap"><div class="hero-text">
+      <div class="hero__text">
+        <h1 id="hero-h">Ovenbrook, a sourdough bakery in Leith</h1>
+        <p class="hero__lead">Bread <span data-assumed>from 7:30, Tuesday to Sunday</span>. Cakes to order two days ahead.</p>
+        <div class="btn-row"><a class="btn btn--primary" href="mailto:hello@ovenbrook.example">Order a cake</a></div>
+      </div>
+    </div></div>
+  </section>
+
+  <section class="section" id="shop" style="--hm: 2" aria-labelledby="shop-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="shop-h">Today's bake, and cakes to order</h2>
+        <p>Collect at the counter; nothing needs a pre-order but the cakes.</p>
+      </div>
+      <div class="grid grid--top">
+        <div class="span-3" id="counter">
+          <p class="t-label">Today's bake</p>
+          <ul class="rows">
+            <li><span class="rows__name">Sourdough loaf</span><span class="rows__value" data-assumed>£3.40</span></li>
+            <li><span class="rows__name">Rye loaf</span><span class="rows__value" data-assumed>£3.80</span></li>
+            <li><span class="rows__name">Seeded cob</span><span class="rows__value" data-assumed>£3.20</span></li>
+            <li><span class="rows__name">Cardamom bun</span><span class="rows__value" data-assumed>£2.60</span></li>
+          </ul>
+        </div>
+        <div class="span-3" id="cakes">
+          <p class="t-label">Cakes to order</p>
+          <ul class="rows">
+            <li><span class="rows__name">Celebration cake</span><span class="rows__value" data-assumed>from £38</span></li>
+            <li><span class="rows__name">Fruit tart for eight</span><span class="rows__value" data-assumed>£24</span></li>
+            <li><span class="rows__name">Chocolate tart</span><span class="rows__value" data-assumed>£22</span></li>
+            <li><span class="rows__name">Pastry box of six</span><span class="rows__value" data-assumed>£12</span></li>
+          </ul>
+        </div>
+        <figure class="pl-photo develop span-6" style="--pl-r: 1.5" data-moment="picture-develops">
+          <img src="assets/img/photo-m33603558-1600.webp" srcset="assets/img/photo-m33603558-1600.webp 1600w" sizes="(max-width: 639px) 189vw, (max-width: 1023px) 180vw, 50vw" width="1600" height="1060" alt="Stone bread oven with its iron doors open and a tray of round seeded loaves inside" loading="lazy" decoding="async" data-source="library-057" data-subject="oven" style="object-position: 50% 62%">
+        </figure>
+      </div>
+      <div class="visit visit--cols" id="visit" style="margin-top: var(--s-6)">
+        <div class="visit__cols">
+          <div class="visit__col stack-4">
+            <p class="t-label">Visit</p>
+            <address class="visit__address">Leith, Edinburgh</address>
+            <a class="link" href="https://www.openstreetmap.org/search?query=Leith+Edinburgh">See the area<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
+          </div>
+          <div class="visit__col">
+            <p class="t-label">Opening hours</p>
+            <dl class="hours" data-tz="Europe/London" data-assumed>
+              <dt>Tue to Fri</dt><dd>7:30 to 16:00</dd>
+              <dt>Sat</dt><dd>8:00 to 15:00</dd>
+              <dt>Sun and Mon</dt><dd>Closed</dd>
+            </dl>
+          </div>
+          <div class="visit__col stack-4">
+            <p class="t-label">Orders</p>
+            <p>Cakes are baked to order, two days ahead, collected from the counter.</p>
+            <a class="btn btn--primary" href="mailto:hello@ovenbrook.example">Order a cake</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer closing ground-brand" id="contact" aria-labelledby="close-h">
+  <div class="wrap">
+    <div class="closing__cta close--photo">
+      <div class="section-head--split">
+        <div><h2 id="close-h">Order a cake for the weekend</h2><p class="t-lead"><span data-assumed>Tell us by Thursday, collect from Saturday.</span></p></div>
+        <a class="btn btn--primary" href="mailto:hello@ovenbrook.example">Order a cake</a>
+      </div>
+      <div class="close__media">
+        <img src="assets/img/photo-m37164269-1200.webp" srcset="assets/img/photo-m37164269-1200.webp 1200w" sizes="(max-width: 639px) 150vw, 100vw" width="1200" height="896" alt="Rye dough rising in coiled straw and wicker proving baskets on a weathered plank table against a log wall" loading="lazy" decoding="async" data-source="library-057" data-subject="dough" style="object-position: 45% 58%">
+      </div>
+    </div>
+    <div class="closing__links">
+      <div class="grid grid--top">
+        <div class="span-6 stack-4">
+          <address class="footer__address">Leith, Edinburgh</address>
+          <p><a class="link" href="https://www.openstreetmap.org/search?query=Leith+Edinburgh">See the area</a></p>
+        </div>
+        <div class="span-6 start-7 stack-4">
+          <h3>Opening hours</h3>
+          <dl class="hours" data-tz="Europe/London" data-assumed>
+            <dt>Tue to Fri</dt><dd>7:30 to 16:00</dd>
+            <dt>Sat</dt><dd>8:00 to 15:00</dd>
+            <dt>Sun and Mon</dt><dd>Closed</dd>
+          </dl>
+        </div>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2026 Ovenbrook</span>
+        <a class="credits" href="credits.html">Photographs via Wikimedia Commons</a>
+        <span style="flex-basis: 100%; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); align-items: center;"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<nav class="actionbar" aria-label="Quick actions">
+  <a class="btn btn--primary" href="mailto:hello@ovenbrook.example">Order a cake</a>
+</nav>
+
+<script type="module" src="assets/system.js"></script>
+<script type="module" src="assets/motion/motion.js"></script>
+<script type="module" src="assets/layout/layout.js"></script>
+</body>
+</html>
