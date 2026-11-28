@@ -1,0 +1,47 @@
+{
+ "note": "Credits for the photographs in this folder: photos.mjs credits prints the footer block for the ones the pages use.",
+ "photos": [
+  {
+   "file": "photo-m33603672-1800.webp",
+   "files": [
+    "photo-m33603672-1200.webp",
+    "photo-m33603672-1800.webp",
+    "photo-m33603672-2400.webp"
+   ],
+   "id": "m33603672",
+   "alt": "Rye loaves seeded with caraway on the stone floor of an open bread oven, iron doors either side",
+   "by": "Johann Jaritz",
+   "licence": "CC BY-SA 3.0 AT",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en/",
+   "page": "https://commons.wikimedia.org/wiki/File:Stabentheiner_Hof_Brotbackstube_Brotbacken_12062014_224.JPG",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-m33603558-1200.webp",
+   "files": [
+    "photo-m33603558-1200.webp",
+    "photo-m33603558-1600.webp"
+   ],
+   "id": "m33603558",
+   "alt": "Stone bread oven with its iron doors open and a tray of round seeded loaves inside",
+   "by": "Johann Jaritz",
+   "licence": "CC BY-SA 3.0 AT",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en/",
+   "page": "https://commons.wikimedia.org/wiki/File:Stabentheiner_Hof_Brotbackstube_Brotbacken_12062014_221.JPG",
+   "source": "Wikimedia Commons"
+  },
+  {
+   "file": "photo-m37164269-1200.webp",
+   "files": [
+    "photo-m37164269-1200.webp"
+   ],
+   "id": "m37164269",
+   "alt": "Rye dough rising in coiled straw and wicker proving baskets on a weathered plank table against a log wall",
+   "by": "Wald1siedel",
+   "licence": "CC BY-SA 4.0",
+   "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/deed.en/",
+   "page": "https://commons.wikimedia.org/wiki/File:Bread_dough_in_baskets_01.JPG",
+   "source": "Wikimedia Commons"
+  }
+ ]
+}
