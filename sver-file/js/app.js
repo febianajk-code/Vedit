@@ -405,15 +405,25 @@ function clearAll() {
   });
 }
 
-function downloadFile() {
-  const f = getFile(state.currentFile);
-  const name = f ? (f.name + '.' + f.ext) : 'sver-file.txt';
-  const blob = new Blob([editor.value], { type: 'text/plain;charset=utf-8' });
+function downloadBlob(name, text) {
+  if (window.AndroidBlob && window.AndroidBlob.save) {
+    try {
+      window.AndroidBlob.save(name, btoa(unescape(encodeURIComponent(text))));
+      return;
+    } catch (e) {}
+  }
+  const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = name;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+
+function downloadFile() {
+  const f = getFile(state.currentFile);
+  const name = f ? (f.name + '.' + f.ext) : 'sver-file.txt';
+  downloadBlob(name, editor.value);
   toast('⬇ Diunduh: ' + name);
 }
 
@@ -602,12 +612,7 @@ function moveModal(f) {
 }
 
 function downloadAny(f) {
-  const blob = new Blob([f.content], { type: 'text/plain;charset=utf-8' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = f.name + '.' + f.ext;
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  downloadBlob(f.name + '.' + f.ext, f.content);
   toast('⬇ Diunduh');
 }
 
@@ -688,12 +693,7 @@ async function connectFolder() {
 }
 
 function exportBackup() {
-  const blob = new Blob([JSON.stringify(DB, null, 2)], { type: 'application/json' });
-  const a = document.createElement('a');
-  a.href = URL.createObjectURL(blob);
-  a.download = 'sver-file-backup.json';
-  a.click();
-  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  downloadBlob('sver-file-backup.json', JSON.stringify(DB, null, 2));
   toast('⬇ Cadangan dibuat');
 }
 
