@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sver File — Editor File</title>
+<meta name="description" content="Sver File: editor file ringan dengan UI Material Style dan Liquid Glass Style, folder proyek, riwayat edit, dan tema kustom.">
+<meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/logo.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-ui="material" data-mode="dark">
+
+<div id="bgimage"></div>
+<div id="bgfx"><i></i><i></i><i></i></div>
+
+<div id="loader" aria-hidden="true">
+  <img class="load-logo" src="icons/logo.svg" alt="">
+  <div class="load-title">Sver File</div>
+  <div class="load-bar"><i></i></div>
+  <div class="load-tip">Menyiapkan penyimpanan lokal…</div>
+</div>
+
+<div id="onboard" role="dialog" aria-modal="true">
+  <div class="onboard-card panel">
+    <img class="load-logo small" src="icons/logo.svg" alt="Logo Sver File">
+    <h2>Selamat Datang di Sver File</h2>
+    <p>Untuk menyimpan catatan, proyek, dan riwayat edit kamu, Sver File butuh
+       <strong>akses penyimpanan lokal</strong> di perangkat ini.</p>
+    <ul class="perm-list">
+      <li>💾 Simpan file &amp; proyek di perangkat</li>
+      <li>🔒 Data tidak dikirim ke mana pun</li>
+      <li>🕘 Riwayat edit tetap tersimpan</li>
+    </ul>
+    <button class="btn primary big" id="btn-perm">Izinkan Akses Penyimpanan</button>
+    <div class="perm-status" id="perm-status"></div>
+    <button class="btn ghost small" id="btn-skip">Lewati dulu</button>
+  </div>
+</div>
+
+<div class="app">
+  <header class="topbar panel">
+    <img class="app-logo" src="icons/logo.svg" alt="">
+    <div class="app-title">
+      <strong>Sver File</strong>
+      <span id="save-state">siap</span>
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="btn-mode" title="Mode terang / gelap" aria-label="Mode terang / gelap">🌙</button>
+      <button class="icon-btn accent" id="btn-new" title="File baru" aria-label="File baru">＋</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section id="view-files" class="view active">
+      <div class="view-head">
+        <h2>Beranda</h2>
+        <div class="head-actions">
+          <button class="btn ghost small" id="btn-newfolder">＋ Folder</button>
+        </div>
+      </div>
+      <div class="quick-actions">
+        <button class="btn primary" id="btn-new2">＋ Buat File Baru</button>
+        <button class="btn" id="btn-opendevice">📂 Buka dari Perangkat</button>
+      </div>
+      <div class="chips" id="folder-chips" aria-label="Folder proyek"></div>
+      <div class="filelist" id="filelist"></div>
+      <div class="empty" id="files-empty" hidden>
+        <img class="empty-logo" src="icons/logo.svg" alt="">
+        <p>Belum ada file di sini.<br>Buat file baru untuk mulai menulis.</p>
+        <button class="btn primary" id="btn-new3">＋ Buat File Baru</button>
+      </div>
+    </section>
+
+    <section id="view-editor" class="view">
+      <div class="ed-head panel">
+        <span class="ed-icon" id="ed-icon">📄</span>
+        <div class="ed-fileinfo">
+          <strong id="ed-name">Tanpa Nama</strong>
+          <small id="ed-folder"></small>
+        </div>
+        <div class="ed-actions">
+          <button class="btn primary small" id="btn-save">💾 Simpan</button>
+          <button class="icon-btn" id="btn-close-ed" title="Tutup editor" aria-label="Tutup editor">✕</button>
+        </div>
+      </div>
+      <div class="toolbar panel" id="toolbar" aria-label="Alat editor">
+        <button class="btn small" data-cmd="undo">↶ Undo</button>
+        <button class="btn small" data-cmd="redo">↷ Redo</button>
+        <button class="btn small" data-cmd="cut">✂ Potong</button>
+        <button class="btn small" data-cmd="copy">⧉ Salin</button>
+        <button class="btn small" data-cmd="paste">📋 Tempel</button>
+        <button class="btn small" data-cmd="selall">Pilih Semua</button>
+        <button class="btn small" data-cmd="clear">Kosongkan</button>
+        <button class="btn small" data-cmd="download">⬇ Unduh</button>
+      </div>
+      <textarea id="editor" spellcheck="false" autocomplete="off"
+        placeholder="Mulai menulis…" aria-label="Editor teks"></textarea>
+      <div class="ed-stats panel">
+        <span id="st-lines">1 baris</span>
+        <span id="st-chars">0 karakter</span>
+        <span id="st-cur">Ln 1, Col 1</span>
+      </div>
+    </section>
+
+    <section id="view-history" class="view">
+      <div class="view-head">
+        <h2>Riwayat</h2>
+        <button class="btn ghost small" id="btn-clearhist">Bersihkan</button>
+      </div>
+      <p class="hint">File yang baru saja kamu edit muncul di sini.</p>
+      <div class="filelist" id="histlist"></div>
+      <div class="empty" id="hist-empty" hidden>
+        <p>Belum ada riwayat edit.</p>
+      </div>
+    </section>
+
+    <section id="view-settings" class="view">
+      <div class="view-head"><h2>Pengaturan</h2></div>
+
+      <div class="set-group panel">
+        <h3>Gaya Tampilan</h3>
+        <div class="ui-pick">
+          <button class="ui-card" id="ui-material">
+            <span class="ui-preview material-prev"><i></i><b></b></span>
+            <span>Material Style</span>
+          </button>
+          <button class="ui-card" id="ui-glass">
+            <span class="ui-preview glass-prev"><i></i><b></b></span>
+            <span>Liquid Glass Style</span>
+          </button>
+        </div>
+        <div class="seg" id="mode-seg">
+          <button data-mode="dark" class="seg-btn">🌙 Gelap</button>
+          <button data-mode="light" class="seg-btn">☀️ Terang</button>
+        </div>
+      </div>
+
+      <div class="set-group panel">
+        <h3>Warna Aksen</h3>
+        <div class="swatches" id="accent-swatches"></div>
+        <label class="row">
+          <span>Warna kustom</span>
+          <input type="color" id="accent-custom" value="#3b82f6">
+        </label>
+      </div>
+
+      <div class="set-group panel">
+        <h3>Latar Belakang</h3>
+        <div class="swatches" id="bg-swatches"></div>
+        <label class="row">
+          <span>Warna kustom</span>
+          <input type="color" id="bg-custom" value="#0b1220">
+        </label>
+        <div class="row-btns">
+          <button class="btn small" id="btn-bgimg">🖼️ Gambar dari Perangkat</button>
+          <button class="btn ghost small" id="btn-bgrm">Hapus Gambar</button>
+        </div>
+      </div>
+
+      <div class="set-group panel">
+        <h3>Efek &amp; Blur</h3>
+        <label class="row slider">
+          <span>Blur <b id="val-blur">16px</b></span>
+          <input type="range" id="set-blur" min="0" max="34" step="1" value="16">
+        </label>
+        <label class="row slider">
+          <span>Transparansi <b id="val-alpha">55%</b></span>
+          <input type="range" id="set-alpha" min="20" max="100" step="1" value="55">
+        </label>
+        <label class="row slider">
+          <span>Ukuran teks <b id="val-font">100%</b></span>
+          <input type="range" id="set-font" min="85" max="130" step="5" value="100">
+        </label>
+      </div>
+
+      <div class="set-group panel">
+        <h3>Penyimpanan &amp; Izin</h3>
+        <p class="hint" id="perm-state">Status izin: belum diperiksa.</p>
+        <div class="row-btns">
+          <button class="btn small" id="btn-perm2">🔐 Perbarui Izin</button>
+          <button class="btn small" id="btn-dir">📁 Hubungkan Folder Proyek</button>
+        </div>
+        <div class="row-btns">
+          <button class="btn small" id="btn-export">⬇ Cadangkan Data</button>
+          <button class="btn small" id="btn-import">⬆ Pulihkan Cadangan</button>
+        </div>
+        <button class="btn danger small" id="btn-reset">🗑️ Reset Aplikasi</button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="bottomnav panel" id="nav" aria-label="Navigasi utama">
+    <button class="nav-btn active" data-view="files" aria-label="Beranda">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+      <span>Beranda</span>
+    </button>
+    <button class="nav-btn" data-view="editor" aria-label="Editor">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l4-1L19 8l-3-3L5 16z"/><path d="M14 6l3 3"/></svg>
+      <span>Editor</span>
+    </button>
+    <button class="nav-btn" data-view="history" aria-label="Riwayat">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      <span>Riwayat</span>
+    </button>
+    <button class="nav-btn" data-view="settings" aria-label="Pengaturan">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+      <span>Pengaturan</span>
+    </button>
+  </nav>
+</div>
+
+<div id="modal"><div class="sheet-card panel" id="modal-card"></div></div>
+<div id="sheet"><div class="sheet-card panel" id="sheet-card"></div></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<input type="file" id="file-import" accept=".txt,.md,.html,.css,.js,.json,.xml,.csv,.py,.java,.c,.cpp,.cs,.php,.sh,.yaml,.yml,.ini,.sql,.svg,.log,.conf,text/*" multiple hidden>
+<input type="file" id="file-bg" accept="image/*" hidden>
+<input type="file" id="file-backup" accept=".json,application/json" hidden>
+
+<script src="js/app.js" defer></script>
+</body>
+</html>
